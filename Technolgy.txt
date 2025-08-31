@@ -1,0 +1,20 @@
+-> React router v7 - Frontend
+-> Tanstack query - data-fetching and state management library in react : fetch data from api easily, update data, builtin state(loading, error, success) handle loading, error and success 
+-> Axios - promise based HTTP Client for node.js and the browser : used for making http request from broser or node.
+-> zod-express-middleware - it is an integration of Zod, typescript-first schema declaration and validation library with express.js application.
+The primary purpose of this integration is to provide robust, type-safe validation of incoming request data (body, query parameters, URL parameters) within Express routes.
+-> Authorization - Jwt, bcrypt(password hashing)
+-> Sendgrid - cloud-based email service platform that helps businesses send and manage emails.
+-> Arcjet SDK - helps developers protect their apps in just a few lines of code. Implement rate limiting, bot protection, email validation, and defense against common attacks(like sql injection).
+-> Backend - NodeJs + ExpressJS
+-> Database - MongoDb with Mongoose[ODM - object data modelling to define mongodb schema]
+
+1. error 400 : BAD REQUEST : is a http status code indicating the server could not undersatnd the send sen by client(browser)
+This may be due to inccorect url, invalid request body, Corrupted Browser Cache or Cookies:
+2. error 500 : Inernal server error : a generic HTTP status code indicating that the website's server encountered an unexpected problem and couldn't fulfill your request
+This is due to corrupted files, no internet, database problem like invalid or inccorect connection
+3. error 401 : Unauthorized error : a response from web server indicatinf taht a request to access a resource was denied becoz lack of valid authentication credenticatials.
+4. error 403 : Forbidden error : client-side HTTP status code that means the web server received your request but refuses to grant access to the requested resource due to insufficient permissions or a server configuration issue
+5. error 402 : Payment Required error : is an HTTP status code indicating that the requested resource requires payment before it can be accessed
+6. http code 200 :  client's request to a server was successful(successful request)
+
