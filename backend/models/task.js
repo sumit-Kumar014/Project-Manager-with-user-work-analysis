@@ -26,7 +26,7 @@ const taskModel = new Schema({
     estimatedHours: {type: Number, min: 0},
     actualHours: {type: Number, min: 0},
     tags: [{type: String}],
-    subTask: [{
+    subTasks: [{
         title: {type: String, required: true},
         completed: {type: Boolean, default: false},
         createdAt: {type: Date, default: Date.now}

@@ -12,7 +12,7 @@ interface ProjectListProps {
 export const ProjectList = ({ workspaceId, projects, onCreateProject, workspaceName }: ProjectListProps) => {
     return (
         <div>
-            <h3 className="text-xl font-medium mb-4 ml-2">Projects of {workspaceName} workspace</h3>
+            <h3 className="text-xl font-medium mb-4 ml-2">Projects of <span className="font-bold text-blue-500">{workspaceName}</span> workspace</h3>
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                 {
                     projects.length === 0 ? (
