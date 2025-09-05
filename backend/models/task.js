@@ -16,7 +16,7 @@ const taskModel = new Schema({
     priority: {
         type: String,
         enum: ["Low", "Medium", "High"],
-        default: ["Medium"]
+        default: "Medium"
     },
     assignee: {type: Schema.Types.ObjectId, ref: "User"},
     assignees: [{type: Schema.Types.ObjectId, ref: "User"}],

@@ -43,7 +43,7 @@ const ProjectDetails = () => {
   const projectProgress = getProjectProgress(tasks)
 
   const handleTaskClick = (taskId: string) => {
-    navigate(`/workspaces/${workspaceId}/${projectId}/tasks/${taskId}`)
+    navigate(`/workspaces/${workspaceId}/projects/${projectId}/tasks/${taskId}`)
   }
 
   return (
@@ -154,19 +154,18 @@ const ProjectDetails = () => {
 
 export default ProjectDetails
 
-interface TaskColumnProps {
-  title: string
-  tasks: Task[]
-  onTaskClick: (taskId: string) => void
-  isFullWidth?: boolean
-}
-
 const TaskColumn = ({
   title,
   tasks,
   onTaskClick,
   isFullWidth = false
-}: TaskColumnProps) => {
+}: {
+  title: string
+  tasks: Task[]
+  onTaskClick: (taskId: string) => void
+  isFullWidth?: boolean
+}
+) => {
   return (
     <div className={isFullWidth ? "grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6" : ""}>
       <div className={cn("space-y-5", !isFullWidth ? "h-full" : "col-span-full mb-4")}>
@@ -196,10 +195,10 @@ const TaskColumn = ({
   )
 }
 
-const TaskCard = ({ task, onClick }: { task: Task; onClick: () => void }) => {
+export const TaskCard = ({ task, onClick }: { task: Task; onClick: () => void }) => {
   return (
-    <Card 
-      onClick={onClick} 
+    <Card
+      onClick={onClick}
       className="cursor-pointer hover:shadow-lg transition-all duration-300 hover:-translate-y-1 rounded-xl border border-gray-200"
     >
       <CardHeader className="pb-2">
@@ -287,10 +286,11 @@ const TaskCard = ({ task, onClick }: { task: Task; onClick: () => void }) => {
         </div>
         {task.subTasks && task.subTasks.length > 0 && (
           <div className="pt-1 text-xs text-muted-foreground">
-            {task.subTasks.filter((s) => s.isCompleted).length}/{task.subTasks.length} subtasks
+            {task.subTasks.filter((s) => s.completed).length}/{task.subTasks.length} subtasks
           </div>
         )}
       </CardContent>
     </Card>
   )
 }
+

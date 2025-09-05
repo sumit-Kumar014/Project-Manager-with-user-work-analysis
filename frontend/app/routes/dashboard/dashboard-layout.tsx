@@ -2,20 +2,20 @@ import Header from "@/components/layout/header"
 import Sidebar from "@/components/layout/sidebar"
 import Loader from "@/components/ui/loader"
 import { CreateWorkspace } from "@/components/workspace/create-workspace"
-// import { getData } from "@/lib/fetch-utils"
+import { getData } from "@/lib/fetch-utils"
 import { useAuth } from "provider/auth-context"
 import { useState } from "react"
 import { Navigate, Outlet } from "react-router"
 import type { Workspace } from "types"
 
-// export const clientLoader = async () => {
-//   try {
-//     const [workspaces] = await Promise.all([getData("/workspaces")])
-//     return { workspaces }
-//   } catch (error) {
-//     console.log(error)
-//   }
-// }
+export const clientLoader = async () => {
+  try {
+    const [workspaces] = await Promise.all([getData("/workspaces")])
+    return { workspaces }
+  } catch (error) {
+    console.log(error)
+  }
+}
 
 const DashboardLayout = () => {
 

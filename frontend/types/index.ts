@@ -36,7 +36,7 @@ export interface Attachment {
 export interface Subtask {
     _id: string;
     title: string;
-    isCompleted: boolean;
+    completed: boolean;
     createdAt: Date;
 }
 
@@ -100,4 +100,87 @@ export interface MemberProps {
     user: User;
     role: "admin" | "member" | "viewer" | "owner";
     joinedAt: Date;
+}
+
+export type ActionType = 
+            "created_task" |
+            "updated_task" |
+            "created_subtask"|
+            "updated_subtask"|
+            "completed_task"|
+            "created_project"|
+            "updated_project"|
+            "completed_project"|
+            "created_workspace"|
+            "updated_workspace"|
+            "added_comment"|
+            "added_member"|
+            "removed_member"|
+            "joined_workspace"|
+            "transferred_workspace_ownership"|
+            "added_attachment"
+
+export type ResourceType = "Task" | "Project" | "Workspace" | "User" | "Comment"
+
+export interface ActivityLog {
+    _id: string
+    user: User
+    action: ActionType
+    resourceType: ResourceType
+    resourceId: string
+    details: any
+}
+
+export interface CommentReaction {
+    emoji: string
+    user: User
+}
+
+export interface Comment {
+    _id: string
+    author: User
+    text: string
+    createdAt: Date
+    reactions?: CommentReaction[]
+    attachments?: {
+        fileName: string
+        fileUrl: string
+        fileType?: string
+        fileSize?: number 
+    }[]
+}
+
+export interface StatsCardProps {
+    totalProject: number;
+    totalTask: number;
+    totalProjectInProgress: number;
+    totalProjectCompleted: number;
+    totalTaskCompleted: number;
+    totalTaskToDo: number;
+    totalTaskInProgress: number;
+}
+
+export interface TaskTrendsData {
+    name: string
+    completed: number
+    inProgress: number
+    todo: number
+}
+
+export interface ProjectStatusData {
+    name: string
+    value: number
+    color: string
+}
+
+export interface TaskPriorityData {
+    name: string
+    value: number
+    color: string
+}
+
+export interface WorkspaceProductivityData {
+    name: string
+    completed: number
+    total: number
 }

@@ -54,7 +54,7 @@ export const CreateWorkspace = ({ isCreatingWorkspace, setIsCreatingWorkspace }:
                 setIsCreatingWorkspace(false)
                 form.reset()
                 toast.success("Workspace created successfully")
-                navigate(`/worspaces/${data._id}`)
+                navigate(`/workspaces/${data._id}/projects`)
             },
             onError: (error: any) => {
                 const errorMessage = error.message

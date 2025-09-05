@@ -19,6 +19,19 @@ const resetPasswordRequestSchema = z.object({
     email: z.string().email("Invalid email address"),
 });
 
+const tokenSchema = z.object({
+  token: z.string().min(1, "Token is required"),
+});
+
+const emailSchema = z.object({
+  email: z.string().email("Invalid email address"),
+});
+
+const inviteMemberSchema = z.object({
+  email: z.string().email("Invalid email address"),
+  role: z.enum(["admin", "member", "viewer"]),
+});
+
 const resetPasswordSchema = z.object({
     token: z.string().min(1, "Token is required"),
     newPassword: z.string().min(8, "Password must be atleast 8 characters long"),
@@ -58,6 +71,9 @@ const taskSchema = z.object({
 })
 
 export {
+    tokenSchema,
+    emailSchema,
+    inviteMemberSchema,
     taskSchema,
     projectSchema,
     workspaceSchema,

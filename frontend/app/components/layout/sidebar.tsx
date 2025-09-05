@@ -18,7 +18,7 @@ const Sidebar = ({ currentWorkspace }: { currentWorkspace: Workspace | null }) =
         { title: "Workspaces", href: "/workspaces", icon: Briefcase },
         { title: "My Tasks", href: "/my-tasks", icon: CheckSquare },
         { title: "Members", href: "/members", icon: Users },
-        { title: "Achieved", href: "/achieved", icon: Trophy },
+        { title: "Archieved", href: "/archived-tasks", icon: Trophy },
         { title: "Settings", href: "/settings", icon: Settings }
     ]
 

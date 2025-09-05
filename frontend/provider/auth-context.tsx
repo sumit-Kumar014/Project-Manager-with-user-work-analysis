@@ -4,6 +4,7 @@ import React from "react";
 import { queryClient } from "./react-query-provider";
 import { useLocation, useNavigate } from "react-router";
 import { publicRoutes } from "@/lib";
+import { toast } from "sonner";
 
 interface AuthenContextType {
     user: User | null,
@@ -36,19 +37,18 @@ export const AuthProvider = ({children}: {children: React.ReactNode}) => {
             } else {
                 setIsAuthenticated(false)
                 if(!isPublicRoute) {
-                    navigate("/sign-in")
+                    navigate("/", {replace: true})
                 }
             }
             setIsLoading(false)
         }
 
         checkAuth()
-    }, [])
+    }, [isAuthenticated, currentPath])
 
     useEffect(() => {
         const handleLogout = () => {
             logout()
-            navigate("/sign-in")
         }
 
         window.addEventListener("force-logout", handleLogout)
@@ -70,6 +70,8 @@ export const AuthProvider = ({children}: {children: React.ReactNode}) => {
         setUser(null)
         setIsAuthenticated(false)
         queryClient.clear()
+        navigate("/", { replace: true });
+        toast.success("Logout successfully")
     }
 
     const values = {user, isAuthenticated, isLoading, login, logout}

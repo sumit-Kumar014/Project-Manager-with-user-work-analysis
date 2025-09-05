@@ -1,6 +1,6 @@
 import type { Project } from "types";
 import NoDataFound from "./nodata-found";
-import ProjectCard from "../../../components/projects/project-card";
+import ProjectCard from "@/components/projects/project-card";
 
 interface ProjectListProps {
     workspaceName: string;

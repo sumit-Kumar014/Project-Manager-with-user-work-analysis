@@ -107,10 +107,9 @@ const getProjectTasks = async (req, res) => {
     );
 
     if (!isMember) {
-      console.log(req.user._id)
       return res
         .status(403)
-        .json({ message: "You are not a member of this project-2" });
+        .json({ message: "You are not a member of this project" });
     }
 
     const tasks = await Task.find({

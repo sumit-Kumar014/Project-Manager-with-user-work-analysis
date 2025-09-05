@@ -22,7 +22,7 @@ mongoose.connect(process.env.MONGODDB_URI).then(() => console.log("DB connecting
 app.use(express.json())
 
 
-app.get("/", async(req, res) => {
+app.get("/", async (req, res) => {
     res.status(200).json({
         message: "Welcome to TaskTribe API"
     })
