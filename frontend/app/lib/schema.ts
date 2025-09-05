@@ -1,63 +1,79 @@
-import { z } from "zod"
-import { ProjectStatus } from "types"
+import { z } from "zod";
+import { ProjectStatus } from "types";
 
 export const signInSchema = z.object({
-    email: z.string().email("Invalid email address"),
-    password: z.string().min(8, "Password is required")
-})
+  email: z.string().email("Invalid email address"),
+  password: z.string().min(8, "Password is required"),
+});
 
-export const signUpSchema = z.object({
+export const signUpSchema = z
+  .object({
     name: z.string().min(3, "Name must be at least 3 characters"),
     email: z.string().email("Invalid email address"),
-    password: z.string().min(8, "Password must be at atleast 8 characters long"),
-    confirmPassword: z.string().min(8, "Password must be atleast 6 characters long")
-}).refine((data) => data.password === data.confirmPassword, {
+    password: z
+      .string()
+      .min(8, "Password must be at atleast 8 characters long"),
+    confirmPassword: z
+      .string()
+      .min(8, "Password must be atleast 6 characters long"),
+  })
+  .refine((data) => data.password === data.confirmPassword, {
     path: ["confirmPassword"],
-    message: "Password do not match"
-})
+    message: "Password do not match",
+  });
 
-export const resetPasswordSchema = z.object({
+export const resetPasswordSchema = z
+  .object({
     newPassword: z.string().min(8, "Password must be 8 characters long"),
-    confirmPassword: z.string().min(8, "Password must be 8 charcters long")
-}).refine((data) => data.newPassword === data.confirmPassword, {
+    confirmPassword: z.string().min(8, "Password must be 8 charcters long"),
+  })
+  .refine((data) => data.newPassword === data.confirmPassword, {
     path: ["confirmPassword"],
-    message: "Password do not match"
-})
+    message: "Password do not match",
+  });
 
 export const forgetPasswordSchema = z.object({
-    email: z.string().email("Inalid email address")
-})
+  email: z.string().email("Inalid email address"),
+});
 
 export const workspaceSchema = z.object({
-    name: z.string().min(3, "Name must have atleast 3 characters"),
-    color: z.string().min(3, "Color must have atleast 3 characters"),
-    description: z.string().optional()
-
-})
+  name: z.string().min(3, "Name must have atleast 3 characters"),
+  color: z.string().min(3, "Color must have atleast 3 characters"),
+  description: z.string().optional(),
+});
 
 export const projectSchema = z.object({
-    title: z.string().min(3, "Title must have atleast 3 characters"),
-    description: z.string().optional(),
-    status: z.nativeEnum(ProjectStatus),
-    startDate: z.string().min(3, "Start date is required"),
-    dueDate: z.string().min(3, "Due date is required"),
-    members: z.array(z.object({
+  title: z.string().min(3, "Title must have atleast 3 characters"),
+  description: z.string().optional(),
+  status: z.nativeEnum(ProjectStatus),
+  startDate: z.string().min(3, "Start date is required"),
+  dueDate: z.string().min(3, "Due date is required"),
+  members: z
+    .array(
+      z.object({
         user: z.string(),
-        role: z.enum(["manager", "contributor", "viewer"])
-    })).optional(),
-    tags: z.string().optional()
-})
+        role: z.enum(["manager", "contributor", "viewer"]),
+      })
+    )
+    .optional(),
+  tags: z.string().optional(),
+});
 
 export const createTaskSchema = z.object({
-    title: z.string().min(1, "Title is required"),
-    description: z.string().optional(),
-    status: z.enum(["To Do", "In Progress", "Done"]),
-    priority: z.enum(["Low", "Medium", "High"]),
-    dueDate: z.string().min(1, "Due date is required"),
-    assignees: z.array(z.string()).min(1, "Atleast one assignee is required")
-})
+  title: z.string().min(1, "Title is required"),
+  description: z.string().optional(),
+  status: z.enum(["To Do", "In Progress", "Done"]),
+  priority: z.enum(["Low", "Medium", "High"]),
+  dueDate: z.string().min(1, "Due date is required"),
+  assignees: z.array(z.string()).min(1, "Atleast one assignee is required"),
+});
 
 export const inviteMemberSchema = z.object({
+  email: z.string().email(),
+  role: z.enum(["admin", "member", "viewer"]),
+});
+
+export const inite = z.object({
   email: z.string().email(),
   role: z.enum(["admin", "member", "viewer"]),
 });
