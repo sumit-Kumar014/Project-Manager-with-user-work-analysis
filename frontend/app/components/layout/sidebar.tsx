@@ -1,4 +1,4 @@
-import { LayoutDashboard, Briefcase, CheckSquare, Users, Trophy, Settings, LogOut, Wrench, ChevronsRight, ChevronsLeft } from "lucide-react"
+import { LayoutDashboard, Briefcase, CheckSquare, Users, Trophy, Settings, Wrench, ChevronsRight, ChevronsLeft } from "lucide-react"
 import { useAuth } from "provider/auth-context"
 import { useState } from "react"
 import type { Workspace } from "types"

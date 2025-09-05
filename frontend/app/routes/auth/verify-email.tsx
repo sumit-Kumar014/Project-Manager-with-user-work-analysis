@@ -1,6 +1,6 @@
-import { Card, CardContent, CardHeader } from "@/components/ui/card"
+import { Card, CardContent } from "@/components/ui/card"
 import { useEffect, useState } from "react"
-import { Link, useSearchParams, useViewTransitionState } from "react-router"
+import { Link, useSearchParams } from "react-router"
 import { CheckCircle, Loader, XCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useVerifyEmailMMutation } from "hooks/use-auth"
