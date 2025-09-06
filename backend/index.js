@@ -10,9 +10,8 @@ dotenv.config()
 
 const app = express()
 
-
 app.use(cors({
-    origin: process.env.FRONTEND_URL, // allow api request from frontend only
+    origin: [process.env.FRONTEND_URL, "http://localhost:5173/api-v1"], // allow api request from frontend only
     methods: ["GET", "POST", "DELETE", "PUT"],
     allowedHeaders: ["Content-Type", "Authorization"]
 }))
